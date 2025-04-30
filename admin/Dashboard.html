@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <!-- Recursos externos -->
+    <title>VigiaMoz - Dashboard</title>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container">
+            <span class="navbar-brand">VigiaMoz - Painel Admin</span>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <!-- Gráficos -->
+        <div class="row">
+            <div class="col-md-6">
+                <canvas id="vendasChart"></canvas>
+            </div>
+            <div class="col-md-6">
+                <canvas id="instalacoesChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Dados de Exemplo (Substitua por chamadas à API)
+        fetch('https://seu-backend.onrender.com/api/dados')
+            .then(response => response.json())
+            .then(data => {
+                // Gráfico de Vendas
+                new Chart(document.getElementById('vendasChart'), {
+                    type: 'bar',
+                    data: {
+                        labels: ['Jan', 'Fev', 'Mar'],
+                        datasets: [{
+                            label: 'Vendas (MT)',
+                            data: [25000, 32000, 41000],
+                            backgroundColor: '#0052cc'
+                        }]
+                    }
+                });
+
+                // Gráfico de Instalações
+                new Chart(document.getElementById('instalacoesChart'), {
+                    type: 'pie',
+                    data: {
+                        labels: ['Concluídas', 'Pendentes'],
+                        datasets: [{
+                            data: [15, 3],
+                            backgroundColor: ['#28a745', '#dc3545']
+                        }]
+                    }
+                });
+            });
+    </script>
+</body>
+</html>

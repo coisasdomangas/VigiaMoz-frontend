@@ -1,0 +1,33 @@
+/* Cores principais */
+:root {
+    --cor-primaria: #0052cc;
+    --cor-secundaria: #28a745;
+}
+
+/* Banner */
+.banner {
+    background: linear-gradient(rgba(0,0,0,0.7), url('assets/background.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 70vh;
+    display: flex;
+    align-items: center;
+}
+
+/* Botões */
+.btn-primary {
+    background-color: var(--cor-primaria) !important;
+    border: none;
+    transition: transform 0.3s;
+}
+
+.btn-primary:hover {
+    transform: scale(1.05);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .banner h1 {
+        font-size: 2rem;
+    }
+}

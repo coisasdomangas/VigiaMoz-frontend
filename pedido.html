@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <!-- Mesmo cabeçalho do index.html -->
+</head>
+<body>
+    <section class="container py-5">
+        <h2 class="text-center mb-4">Solicitar Instalação</h2>
+        <form id="formPedido" onsubmit="return enviarPedido(event)">
+            <!-- Dados Pessoais -->
+            <div class="mb-3">
+                <label class="form-label">Nome Completo</label>
+                <input type="text" class="form-control" required>
+            </div>
+
+            <!-- Tipo de Local -->
+            <div class="mb-3">
+                <label class="form-label">Tipo de Propriedade</label>
+                <select class="form-select" id="tipoLocal">
+                    <option value="casa">Casa</option>
+                    <option value="empresa">Empresa</option>
+                </select>
+            </div>
+
+            <!-- Botão -->
+            <button type="submit" class="btn btn-primary w-100">
+                <i class="fas fa-paper-plane"></i> Enviar Pedido
+            </button>
+        </form>
+    </section>
+
+    <script>
+        function enviarPedido(e) {
+            e.preventDefault();
+            Swal.fire({
+                title: 'Sucesso!',
+                text: 'Pedido enviado para o VigiaMoz!',
+                icon: 'success'
+            });
+        }
+    </script>
+</body>
+</html>

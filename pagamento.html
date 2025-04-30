@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <!-- Mesmo cabeçalho do index.html -->
+</head>
+<body>
+    <section class="container py-5">
+        <h2 class="text-center mb-4">Finalizar Compra</h2>
+        <div class="row">
+            <!-- Métodos de Pagamento -->
+            <div class="col-md-6">
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title"><i class="fas fa-mobile-alt"></i> Mpesa</h5>
+                        <button class="btn btn-success w-100" onclick="iniciarPagamento('mpesa')">Pagar via Mpesa</button>
+                    </div>
+                </div>
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title"><i class="fas fa-wallet"></i> eMola</h5>
+                        <button class="btn btn-primary w-100" onclick="iniciarPagamento('emola')">Pagar via eMola</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Carrinho -->
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Resumo da Compra</h5>
+                        <ul id="listaCarrinho" class="list-group mb-3"></ul>
+                        <h5>Total: <span id="totalCarrinho">0 MT</span></h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Simulação de Carrinho (Substitua por dados reais)
+        const carrinho = [
+            { nome: "Câmera 8K", preco: 15000 },
+            { nome: "Instalação", preco: 5000 }
+        ];
+
+        // Atualizar Carrinho
+        function atualizarCarrinho() {
+            const lista = document.getElementById('listaCarrinho');
+            const total = carrinho.reduce((sum, item) => sum + item.preco, 0);
+            
+            lista.innerHTML = carrinho.map(item => `
+                <li class="list-group-item d-flex justify-content-between">
+                    <span>${item.nome}</span>
+                    <span>${item.preco} MT</span>
+                </li>
+            `).join('');
+
+            document.getElementById('totalCarrinho').textContent = total + ' MT';
+        }
+
+        // Simular Pagamento
+        function iniciarPagamento(metodo) {
+            Swal.fire({
+                title: 'Redirecionando...',
+                text: `Você será direcionado ao ${metodo.toUpperCase()}`,
+                icon: 'info',
+                timer: 3000
+            });
+        }
+
+        // Inicializar
+        atualizarCarrinho();
+    </script>
+</body>
+</html>
